@@ -1,0 +1,7 @@
+CREATE OR ALTER PROCEDURE sp_InvoiceItem_Delete
+    @Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DELETE FROM InvoiceItems WHERE Id = @Id;
+END
