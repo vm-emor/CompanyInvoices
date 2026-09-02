@@ -1,6 +1,6 @@
 using System.Security.Claims;
-using CompanyInvoices.Core.Interfaces;
-using CompanyInvoices.Core.Models;
+using CompanyInvoices.Abstractions.Interfaces;
+using CompanyInvoices.Contracts.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,7 +40,7 @@ public class InvoicesController : ControllerBase
         }
 
         var invoice = await _repo.GetByIdAsync(id);
-        return invoice is null ? NotFound() : Ok(invoice);
+        return invoice == null ? NotFound() : Ok(invoice);
     }
 
     [HttpGet("company/{companyId:int}")]

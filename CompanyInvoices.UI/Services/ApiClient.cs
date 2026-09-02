@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using CompanyInvoices.Core.Models;
+using CompanyInvoices.Contracts.Models;
 using Newtonsoft.Json;
 
 namespace CompanyInvoices.UI.Services;
@@ -23,7 +23,7 @@ public class ApiClient
         _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     }
 
-    public async Task<LoginResponse?> LoginAsync(LoginRequest request)
+    public async Task<LoginResponse> LoginAsync(LoginRequest request)
     {
         var response = await _http.PostAsync("api/auth/login", CreateJson(request));
         if (!response.IsSuccessStatusCode)

@@ -1,10 +1,10 @@
 using System.Text;
+using CompanyInvoices.Abstractions.Interfaces;
 using CompanyInvoices.API.Services;
-using CompanyInvoices.Core.Interfaces;
 using CompanyInvoices.Data;
 using CompanyInvoices.Data.Repositories;
-using FluentValidation;
 using FluentValidation.AspNetCore;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 

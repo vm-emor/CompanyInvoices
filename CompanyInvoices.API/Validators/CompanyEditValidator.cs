@@ -1,5 +1,4 @@
-using CompanyInvoices.Core.Interfaces;
-using CompanyInvoices.Core.Models;
+using CompanyInvoices.Contracts.Models;
 using FluentValidation;
 
 namespace CompanyInvoices.API.Validators;

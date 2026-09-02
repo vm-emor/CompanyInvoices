@@ -1,6 +1,6 @@
 using System.Data;
-using CompanyInvoices.Core.Interfaces;
-using CompanyInvoices.Core.Models;
+using CompanyInvoices.Abstractions.Interfaces;
+using CompanyInvoices.Contracts.Models;
 using Dapper;
 
 namespace CompanyInvoices.Data.Repositories;
@@ -20,7 +20,7 @@ public class CompanyRepository : ICompanyRepository
         return await conn.QueryAsync<CompanyView>("sp_Company_GetAll", commandType: CommandType.StoredProcedure);
     }
 
-    public async Task<CompanyView?> GetByIdAsync(int id)
+    public async Task<CompanyView> GetByIdAsync(int id)
     {
         using var conn = _factory.Create();
         return await conn.QuerySingleOrDefaultAsync<CompanyView>("sp_Company_GetById", new { Id = id }, commandType: CommandType.StoredProcedure);

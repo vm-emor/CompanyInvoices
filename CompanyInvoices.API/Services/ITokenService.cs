@@ -1,4 +1,4 @@
-using CompanyInvoices.Core.Models;
+using CompanyInvoices.Contracts.Models;
 
 namespace CompanyInvoices.API.Services;
 

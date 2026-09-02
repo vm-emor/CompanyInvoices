@@ -4,7 +4,8 @@ Multi-project sample solution for company and invoice management.
 
 ## Projects
 
-- `CompanyInvoices.Core` - shared models and interfaces
+- `CompanyInvoices.Contracts` - shared API/UI models and result wrappers
+- `CompanyInvoices.Abstractions` - server-side interfaces and abstractions
 - `CompanyInvoices.Data` - Dapper repositories, DbUp migrator, SQL scripts
 - `CompanyInvoices.API` - ASP.NET Core Web API, JWT auth, FluentValidation, permission checks
 - `CompanyInvoices.UI` - WinForms client skeleton
@@ -16,12 +17,14 @@ Multi-project sample solution for company and invoice management.
 - Permissions are loaded from database and can be cached
 - Invoice total is calculated on the server
 - SQL scripts are stored in the data project
+- UI depends only on `Contracts`, not on repository abstractions
 
 ## Solution layout
 
 ```text
 CompanyInvoices.sln
-CompanyInvoices.Core/
+CompanyInvoices.Contracts/
+CompanyInvoices.Abstractions/
 CompanyInvoices.Data/
 CompanyInvoices.API/
 CompanyInvoices.UI/

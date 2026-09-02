@@ -1,7 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using CompanyInvoices.Core.Models;
+using CompanyInvoices.Contracts.Models;
 using Microsoft.IdentityModel.Tokens;
 
 namespace CompanyInvoices.API.Services;
@@ -17,9 +17,9 @@ public class TokenService : ITokenService
 
     public LoginResponse Create(int userId, string userName)
     {
-        var issuer = _configuration["Jwt:Issuer"]!;
-        var audience = _configuration["Jwt:Audience"]!;
-        var key = _configuration["Jwt:Key"]!;
+        var issuer = _configuration["Jwt:Issuer"];
+        var audience = _configuration["Jwt:Audience"];
+        var key = _configuration["Jwt:Key"];
         var expiresMinutes = int.TryParse(_configuration["Jwt:ExpiresMinutes"], out var value) ? value : 60;
         var expiresAt = DateTime.UtcNow.AddMinutes(expiresMinutes);
 

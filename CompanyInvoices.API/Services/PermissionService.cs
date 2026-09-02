@@ -1,5 +1,5 @@
-using CompanyInvoices.Core.Interfaces;
-using CompanyInvoices.Core.Models;
+using CompanyInvoices.Abstractions.Interfaces;
+using CompanyInvoices.Contracts.Models;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace CompanyInvoices.API.Services;
@@ -29,7 +29,7 @@ public class PermissionService : IPermissionService
 
     private async Task<IEnumerable<UserPermission>> GetPermissionsAsync(int userId)
     {
-        if (_cache.TryGetValue(GetKey(userId), out IEnumerable<UserPermission>? cached) && cached is not null)
+        if (_cache.TryGetValue(GetKey(userId), out IEnumerable<UserPermission> cached))
         {
             return cached;
         }

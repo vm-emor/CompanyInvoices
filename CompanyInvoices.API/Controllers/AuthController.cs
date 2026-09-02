@@ -1,6 +1,6 @@
+using CompanyInvoices.Abstractions.Interfaces;
 using CompanyInvoices.API.Services;
-using CompanyInvoices.Core.Interfaces;
-using CompanyInvoices.Core.Models;
+using CompanyInvoices.Contracts.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CompanyInvoices.API.Controllers;
@@ -22,12 +22,11 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         var user = await _users.GetByLoginAsync(request.Login);
-        if (user is null)
+        if (user == null)
         {
             return Unauthorized();
         }
 
-        // Skeleton only: replace with real password hashing/verification.
         if (!string.Equals(user.Value.PasswordHash, request.Password, StringComparison.Ordinal))
         {
             return Unauthorized();

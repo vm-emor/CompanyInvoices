@@ -1,5 +1,5 @@
 using System.Data;
-using CompanyInvoices.Core.Interfaces;
+using CompanyInvoices.Abstractions.Interfaces;
 using Dapper;
 
 namespace CompanyInvoices.Data.Repositories;

@@ -1,6 +1,6 @@
 using System.Data;
-using CompanyInvoices.Core.Interfaces;
-using CompanyInvoices.Core.Models;
+using CompanyInvoices.Abstractions.Interfaces;
+using CompanyInvoices.Contracts.Models;
 using Dapper;
 
 namespace CompanyInvoices.Data.Repositories;

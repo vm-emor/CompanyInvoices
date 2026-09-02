@@ -5,7 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CompanyInvoices.Core\CompanyInvoices.Core.csproj" />
+    <ProjectReference Include="..\CompanyInvoices.Contracts\CompanyInvoices.Contracts.csproj" />
+    <ProjectReference Include="..\CompanyInvoices.Abstractions\CompanyInvoices.Abstractions.csproj" />
     <ProjectReference Include="..\CompanyInvoices.Data\CompanyInvoices.Data.csproj" />
   </ItemGroup>
   <ItemGroup>
