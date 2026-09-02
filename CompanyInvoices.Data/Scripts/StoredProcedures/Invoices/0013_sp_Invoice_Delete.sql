@@ -1,0 +1,7 @@
+CREATE OR ALTER PROCEDURE sp_Invoice_Delete
+    @Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DELETE FROM Invoices WHERE Id = @Id;
+END

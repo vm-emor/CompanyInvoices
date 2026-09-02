@@ -1,0 +1,51 @@
+CREATE TABLE Companies (
+    Id INT IDENTITY PRIMARY KEY,
+    Name NVARCHAR(200) NOT NULL,
+    TaxNumber NVARCHAR(50) NOT NULL,
+    Address NVARCHAR(500) NOT NULL,
+    Email NVARCHAR(200) NULL
+);
+
+CREATE TABLE Invoices (
+    Id INT IDENTITY PRIMARY KEY,
+    CompanyId INT NOT NULL REFERENCES Companies(Id),
+    Number NVARCHAR(50) NOT NULL,
+    InvoiceDate DATETIME2 NOT NULL,
+    TotalAmount DECIMAL(18,2) NOT NULL,
+    CONSTRAINT UQ_Invoices_Number UNIQUE (Number)
+);
+
+CREATE TABLE InvoiceItems (
+    Id INT IDENTITY PRIMARY KEY,
+    InvoiceId INT NOT NULL REFERENCES Invoices(Id),
+    Description NVARCHAR(500) NOT NULL,
+    Quantity DECIMAL(18,2) NOT NULL,
+    UnitPrice DECIMAL(18,2) NOT NULL
+);
+
+CREATE TABLE Users (
+    Id INT IDENTITY PRIMARY KEY,
+    Login NVARCHAR(100) NOT NULL UNIQUE,
+    PasswordHash NVARCHAR(256) NOT NULL,
+    Name NVARCHAR(200) NOT NULL
+);
+
+CREATE TABLE SecurityObjects (
+    Id INT IDENTITY PRIMARY KEY,
+    Code NVARCHAR(50) NOT NULL UNIQUE,
+    Name NVARCHAR(200) NOT NULL
+);
+
+CREATE TABLE PermissionTypes (
+    Id INT IDENTITY PRIMARY KEY,
+    Code NVARCHAR(50) NOT NULL UNIQUE,
+    Name NVARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Permissions (
+    Id INT IDENTITY PRIMARY KEY,
+    UserId INT NOT NULL REFERENCES Users(Id),
+    SecurityObjectId INT NOT NULL REFERENCES SecurityObjects(Id),
+    PermissionTypeId INT NOT NULL REFERENCES PermissionTypes(Id),
+    CONSTRAINT UQ_Permissions UNIQUE (UserId, SecurityObjectId, PermissionTypeId)
+);

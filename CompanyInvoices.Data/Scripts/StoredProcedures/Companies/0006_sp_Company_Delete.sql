@@ -1,0 +1,7 @@
+CREATE OR ALTER PROCEDURE sp_Company_Delete
+    @Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DELETE FROM Companies WHERE Id = @Id;
+END
